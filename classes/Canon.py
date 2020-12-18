@@ -19,4 +19,5 @@ class Canon ():
             self.position [0] -= 1
 
     #def shoot (self) :
+
         

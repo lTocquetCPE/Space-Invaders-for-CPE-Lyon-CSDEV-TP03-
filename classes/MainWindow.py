@@ -35,4 +35,4 @@ class MainWindow(Tk) :
     def manageEvent (self):
         self.bind('<Key>', lambda event : Canon.move(event.keycode))
         self.bind('<Space>', lambda event : Canon.shoot())
-    
+        

@@ -29,9 +29,9 @@ class AnimatedSprite():
     self.tempImg = self.imgPIL.crop((pos[0], pos[1],cropSize[0], cropSize[1]))
     
     
-  def setSpriteSize(self, size):
+  def setSpriteSize(self, size,cropSize, sizeMultiplier=10):
     self.size = (cropSize[0]*sizeMultiplier, cropSize[1]* sizeMultiplier)
-    tempImg = self.tempImg.resize(self.size, resample = Image.NEAREST)
+    self.tempImg = self.tempImg.resize(self.size, resample = Image.NEAREST)
 
   def draw(self, gameCanvas):
     self.img = ImageTk.PhotoImage(self.tempImg)
