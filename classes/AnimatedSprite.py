@@ -9,13 +9,12 @@ from PIL import ImageTk, Image
 from tkinter import PhotoImage
 #class managing the sprites, their position and animations
 class AnimatedSprite():
-  def __init__(self, path, initPos, size, scale=1):
+  def __init__(self, path, initPos, spriteSheetPos, size, scale=1):
     
     self.path = path
     self.pos = initPos
 
-    self.spriteSheetPos = (0, 0)
-    self.size = size
+   
 
     #Image management
     self.imgPIL = Image.open(path) #Original image
@@ -24,8 +23,16 @@ class AnimatedSprite():
 
     
 
+    self.spriteSheetPos = (0, 0)
+    self.size = size
+    self.setSpriteSheetPos(self.spriteSheetPos, self.size)
 
-  def setSpriteSheetPos(self, pos, cropSize, sizeMultiplier = 10):
+
+    self.scale = scale
+    self.setSpriteSize(scale)
+
+
+  def setSpriteSheetPos(self, pos, cropSize):
     self.tempImg = self.imgPIL.crop((pos[0], pos[1],cropSize[0], cropSize[1]))
     
     
