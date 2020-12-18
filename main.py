@@ -17,4 +17,6 @@ mainWindow = MainWindow()
 firstSprite = AnimatedSprite(mainWindow.gameCanvas, "./ressources/pikatest.png", (0,0))
 gameLoop(mainWindow, None)
 
+mainWindow.manageEvent()
+
 mainWindow.mainloop()

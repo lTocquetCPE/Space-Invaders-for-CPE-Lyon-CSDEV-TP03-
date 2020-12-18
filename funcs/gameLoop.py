@@ -11,7 +11,7 @@ framesPerSecond = 30
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
-  print("Welcome to the gameLoop")
+  #print("Welcome to the gameLoop")
   #DISPLAYING STUFF
 
   mainWindow.gameCanvas.updateCanvas(gameState)
