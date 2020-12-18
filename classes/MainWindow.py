@@ -30,5 +30,3 @@ class MainWindow(Tk) :
         self.currentScoreLabel.pack()
         self.currentLivesLabel.pack()
 
-        self.mainloop()
-

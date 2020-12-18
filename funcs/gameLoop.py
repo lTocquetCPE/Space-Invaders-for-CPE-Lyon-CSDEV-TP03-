@@ -8,7 +8,7 @@ Function managing the game and drawing loop
 
 framesPerSecond = 30
 
-def gameLoop(window, gameState):
+def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
   print("Welcome to the gameLoop")
@@ -16,5 +16,5 @@ def gameLoop(window, gameState):
 
 
   #TODO condition to stop the gameLoop
-  window.after(int(1000/framesPerSecond), lambda: gameLoop ())
+  mainWindow.after(int(1000/framesPerSecond), lambda: gameLoop (mainWindow, gameState))
   
