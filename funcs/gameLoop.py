@@ -13,7 +13,7 @@ def gameLoop(mainWindow, gameState):
   #GAME LOGIC
   print("Welcome to the gameLoop")
   #DISPLAYING STUFF
-
+  
 
   #TODO condition to stop the gameLoop
   mainWindow.after(int(1000/framesPerSecond), lambda: gameLoop (mainWindow, gameState))

@@ -7,6 +7,7 @@ Class describing the widgets in the game window
 """
 
 from tkinter import Tk, Label, Button, Canvas
+from classes.GameCanvas import GameCanvas
 
 class MainWindow(Tk) :
     #init manages the layout of the window
@@ -17,7 +18,7 @@ class MainWindow(Tk) :
         self.title("Space Invader")
 
         #widget
-        self.gameCanvas = Canvas(self, )
+        self.gameCanvas = GameCanvas()
         self.gameButton = Button(self, text="New Game") #to do add command to start a new game
         self.quitButton = Button(self, text="Quit", command=self.destroy)
         self.currentScoreLabel = Label(self, text="Score :") # to do add score

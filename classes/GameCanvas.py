@@ -22,5 +22,5 @@ class GameCanvas(Canvas):
     
     #TODO updates everything on the canvas (calls a special function in each element)
     def updateCanvas(self):
-        
+        return None
 

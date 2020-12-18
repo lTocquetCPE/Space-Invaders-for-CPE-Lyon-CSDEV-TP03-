@@ -8,11 +8,13 @@ entry point for the Space Invaders Game
 from tkinter import Tk, Label, Button, Canvas
 
 from classes.MainWindow import MainWindow
+from classes.AnimatedSprite import AnimatedSprite
 from funcs.gameLoop import gameLoop
 
 
 mainWindow = MainWindow()
 
+firstSprite = AnimatedSprite(mainWindow.gameCanvas, "./ressources/pikatest.png", (0,0))
 gameLoop(mainWindow, None)
 
 mainWindow.mainloop()
