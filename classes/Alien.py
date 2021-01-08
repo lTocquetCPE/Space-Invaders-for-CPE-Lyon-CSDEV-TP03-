@@ -14,6 +14,12 @@ class Alien () :
         self.Alientype = Alientype
         self.speed = 0
 
+        self.frameCounter = 0
+        self.nbFrame=15
+        self.moveCounter=10
+        self.deltax=8
+        self.deltay=10
+
         #TO DO set all attribut
         if self.Alientype == "Squid" : #Small Invader
             #TO DO reset next attribut
@@ -30,14 +36,20 @@ class Alien () :
     def draw (self, gameCanvas):
         self.SpriteSheet.draw(gameCanvas)
 
-    def move (self):
-        deltax=10
-        deltay=5
+    def manageEntity(self):
+        if self.frameCounter==self.nbFrame and self.moveCounter!=0:
+            self.move(self.deltax,0)
+            self.frameCounter=0
+            self.moveCounter-=1
+        elif self.frameCounter==self.nbFrame and self.moveCounter==0:
+            self.moveCounter=10
+            self.deltax=-1*self.deltax
+            self.move(0,self.deltay)
+            self.frameCounter=0
+        self.frameCounter+=1
+
+    def move (self, deltax, deltay):
         self.SpriteSheet.pos=(self.SpriteSheet.pos[0]+deltax , self.SpriteSheet.pos[1])
         self.SpriteSheet.pos=(self.SpriteSheet.pos[0], self.SpriteSheet.pos[1]+deltay)
-
-    def handleKeyboardEvent(self, eventType):
-        if eventType == "KEY_PRESS":
-            self.move()
 
 

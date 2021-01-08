@@ -12,6 +12,8 @@ def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
   gameState.canon.manageEntity()
+  for alien in gameState.listAlien :
+    alien.manageEntity()
   #DISPLAYING STUFF
 
   mainWindow.gameCanvas.updateCanvas(gameState)
