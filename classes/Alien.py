@@ -26,6 +26,7 @@ class Alien () :
             self.pos = [50,200]
             self.SpriteSheet = AnimatedSprite("./ressources/SpriteSheet.png", self.pos, [25,0],[14,8],5)
 
+
     def setSprite (self):
         #createSprite=AnimatedSprite()
         #createSprite.setSpriteSheetPos(spriteSheetPos, cropSize)
