@@ -13,8 +13,8 @@ from tkinter import Canvas
 class GameCanvas(Canvas):
     def __init__(self):
 
-        self.height = 960
-        self.width = 720
+        self.height = 500
+        self.width = 800
         Canvas.__init__(self, width = self.width, height = self.height)
 
 
