@@ -17,4 +17,5 @@ class GameState() :
         self.score=0
         self.canon = Canon()
         self.listAlien=[Alien("Squid"),Alien("Crab"),Alien("Octopus")]
+        self.listProjectiles = []
         
