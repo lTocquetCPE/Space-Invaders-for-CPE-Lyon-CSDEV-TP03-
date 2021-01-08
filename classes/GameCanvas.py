@@ -24,5 +24,8 @@ class GameCanvas(Canvas):
     def updateCanvas(self, gameState):
         self.delete('all')
         gameState.canon.draw(self)
+        for alien in gameState.listAlien :
+            alien.draw(self)
+        
 
 

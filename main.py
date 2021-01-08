@@ -23,8 +23,3 @@ gameLoop(mainWindow, gameState)
 #firstSprite = AnimatedSprite(mainWindow.gameCanvas, "./ressources/SpriteSheet.png", (0,0), (12, 8))
 #firstSprite.setSpriteSheetPos(mainWindow.gameCanvas, (0,0), (20,20))
 #gameLoop(mainWindow, None)
-
-Alien1=Alien("Squid")
-Alien1.setSprite()
-mainWindow.manageEvent(gameState)
-mainWindow.mainloop()
