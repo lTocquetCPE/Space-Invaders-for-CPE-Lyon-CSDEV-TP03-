@@ -11,18 +11,19 @@ from classes.AnimatedSprite import AnimatedSprite
 
 class Alien () :
     def __init__(self, Alientype,position):
-        self.Alientype = Alientype
+        self.Alientype = Alientype  
         self.speed = 0
 
+        #variable for invaders move
         self.frameCounter = 0
         self.nbFrame=15
         self.moveCounter=10
         self.deltax=8
         self.deltay=10
 
-        #TO DO set all attribut
+        #set general invader position
+        #specific position is define on GameState
         if self.Alientype == "Squid" : #Small Invader
-            #TO DO reset next attribut
             self.pos = [position[0]+50,position[1]+50]                #position on canvas
             self.SpriteSheet = AnimatedSprite("./ressources/SpriteSheet.png", self.pos, [0,0],[11,8],3)
         elif self.Alientype == "Crab" : #Medium Invader
@@ -32,6 +33,8 @@ class Alien () :
             self.pos = [position[0]+50,position[1]+200]
             self.SpriteSheet = AnimatedSprite("./ressources/SpriteSheet.png", self.pos, [25,0],[14,8],3)
 
+        #set explosion sprite sheet
+        self.explosionSprite = AnimatedSprite("./ressources/SpriteSheet.png", self.pos, [40,0],[15,8],3)
 
     def draw (self, gameCanvas):
         self.SpriteSheet.draw(gameCanvas)
@@ -51,5 +54,9 @@ class Alien () :
     def move (self, deltax, deltay):
         self.SpriteSheet.pos=(self.SpriteSheet.pos[0]+deltax , self.SpriteSheet.pos[1])
         self.SpriteSheet.pos=(self.SpriteSheet.pos[0], self.SpriteSheet.pos[1]+deltay)
+
+    def death (self):
+        self.SpriteSheet = self.explosionSprite
+        
 
 
