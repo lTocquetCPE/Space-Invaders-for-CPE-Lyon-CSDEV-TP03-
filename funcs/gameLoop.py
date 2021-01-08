@@ -6,7 +6,7 @@ Function managing the game and drawing loop
 18/12/20 by Loïc (Pyrrha) TOCQUET and MALOSSE Alice
 """
 
-framesPerSecond = 30
+framesPerSecond = 60
 
 def gameLoop(mainWindow, gameState):
 

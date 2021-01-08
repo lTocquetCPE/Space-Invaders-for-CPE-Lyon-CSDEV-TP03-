@@ -53,8 +53,8 @@ class Canon ():
     def move (self, direction):
 
       if direction == "RIGHT": 
-            #TODO add condition if x=max, don't change position
-            self.sprite.pos = (self.sprite.pos[0] + self.speed, self.sprite.pos[1])
+            if self.sprite.pos[0] + self.speed < 780:
+              self.sprite.pos = (self.sprite.pos[0] + self.speed, self.sprite.pos[1])
       elif direction =="LEFT":
           if self.sprite.pos[0] - self.speed >= 0:
             self.sprite.pos = (self.sprite.pos[0] - self.speed, self.sprite.pos[1])
