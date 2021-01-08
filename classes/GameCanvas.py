@@ -15,7 +15,7 @@ class GameCanvas(Canvas):
 
         self.height = 500
         self.width = 800
-        Canvas.__init__(self, width = self.width, height = self.height)
+        Canvas.__init__(self, width = self.width, height = self.height , bg="black")
 
 
         
