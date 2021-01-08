@@ -17,10 +17,12 @@ class GameCanvas(Canvas):
         self.width = 720
         Canvas.__init__(self, width = self.width, height = self.height)
 
-        self.drawableList = []
+
         
     
     #TODO updates everything on the canvas (calls a special function in each element)
     def updateCanvas(self, gameState):
-        return None
+        self.delete('all')
+        gameState.canon.draw(self)
+
 

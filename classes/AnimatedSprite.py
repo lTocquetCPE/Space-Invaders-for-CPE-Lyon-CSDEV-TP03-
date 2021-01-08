@@ -9,7 +9,7 @@ from PIL import ImageTk, Image
 from tkinter import PhotoImage
 #class managing the sprites, their position and animations
 class AnimatedSprite():
-  def __init__(self, path, initPos, spriteSheetPos, size, scale=1):
+  def __init__(self, path, initPos, spriteSheetPos, size, scale):
     
     self.path = path
     self.pos = initPos
@@ -19,30 +19,29 @@ class AnimatedSprite():
     #Image management
     self.imgPIL = Image.open(path) #Original image
     self.tempImg = self.imgPIL  #temporary image that can be cropped, resized and other
-    self.img = ImageTk.PhotoImage(self.imgPIL) #image used in create_image
+    self.img = None #keeps the image ref
 
     
 
-    self.spriteSheetPos = (0, 0)
+    self.spriteSheetPos = spriteSheetPos
     self.size = size
     self.setSpriteSheetPos(self.spriteSheetPos, self.size)
 
 
     self.scale = scale
-    self.setSpriteSize(scale)
+    self.setSpriteScale(scale)
 
 
   def setSpriteSheetPos(self, pos, cropSize):
-    self.tempImg = self.imgPIL.crop((pos[0], pos[1],cropSize[0], cropSize[1]))
+    self.tempImg = self.imgPIL.crop((pos[0], pos[1], pos[0] + cropSize[0], pos[1] + cropSize[1]))
     
     
-  def setSpriteSize(self, size):
-    self.size = (cropSize[0]*sizeMultiplier, cropSize[1]* sizeMultiplier)
-    tempImg = self.tempImg.resize(self.size, resample = Image.NEAREST)
+  def setSpriteScale(self, scale):
+    self.scale = scale
+    self.size = (self.size[0]*self.scale, self.size[1]* self.scale)
+    self.tempImg = self.tempImg.resize(self.size, resample = Image.NEAREST)
 
   def draw(self, gameCanvas):
-    if self.sprite == None:
-      self.sprite = None gameCanvas.create_image(self.pos[0], self.pos[1], image=self.img, anchor="nw")
-    else:
       self.img = ImageTk.PhotoImage(self.tempImg)
-      gameCanvas.itemconfig(self.sprite, image= self.img)
+      gameCanvas.create_image(self.pos[0], self.pos[1], image=self.img, anchor="nw")
+      

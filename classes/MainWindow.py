@@ -32,7 +32,7 @@ class MainWindow(Tk) :
         self.currentLivesLabel.pack()
 
     #detect board click and add keycode to function 
-    def manageEvent (self):
-        self.bind('<Key>', lambda event : Canon.move(event.keycode))
-        self.bind('<Space>', lambda event : Canon.shoot())
+    def manageEvent (self, gameState):
+        self.bind('<KeyPress>', lambda event : gameState.canon.handleKeyboardEvent(event.keycode, "KEY_PRESS"))
+        self.bind('<KeyRelease>', lambda event : gameState.canon.handleKeyboardEvent(event.keycode, "KEY_RELEASE"))
     

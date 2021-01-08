@@ -11,9 +11,9 @@ framesPerSecond = 30
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
-  #print("Welcome to the gameLoop")
+  gameState.canon.manageEntity()
   #DISPLAYING STUFF
-  
+
   mainWindow.gameCanvas.updateCanvas(gameState)
 
   #TODO condition to stop the gameLoop
