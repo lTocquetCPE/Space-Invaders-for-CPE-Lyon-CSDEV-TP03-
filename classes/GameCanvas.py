@@ -26,6 +26,8 @@ class GameCanvas(Canvas):
         gameState.canon.draw(self)
         for alien in gameState.listAlien :
             alien.draw(self)
+        for projectile in gameState.listProjectiles:
+            projectile.draw(self)
         
 
 
