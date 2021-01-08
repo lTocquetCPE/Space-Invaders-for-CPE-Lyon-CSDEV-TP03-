@@ -30,3 +30,14 @@ class Alien () :
     def draw (self, gameCanvas):
         self.SpriteSheet.draw(gameCanvas)
 
+    def move (self):
+        deltax=10
+        deltay=5
+        self.SpriteSheet.pos=(self.SpriteSheet.pos[0]+deltax , self.SpriteSheet.pos[1])
+        self.SpriteSheet.pos=(self.SpriteSheet.pos[0], self.SpriteSheet.pos[1]+deltay)
+
+    def handleKeyboardEvent(self, eventType):
+        if eventType == "KEY_PRESS":
+            self.move()
+
+
