@@ -11,7 +11,7 @@ framesPerSecond = 60
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
-  gameState.canon.manageEntity()
+  gameState.canon.manageEntity(gameState)
 
   for alien in gameState.listAlien :
     alien.manageEntity()
