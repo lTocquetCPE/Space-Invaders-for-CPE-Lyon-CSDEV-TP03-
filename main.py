@@ -24,7 +24,7 @@ gameLoop(mainWindow, gameState)
 #firstSprite.setSpriteSheetPos(mainWindow.gameCanvas, (0,0), (20,20))
 #gameLoop(mainWindow, None)
 
-Alien1=Alien("Squid")
+Alien1=Alien("Squid", [0,0])
 Alien1.setSprite()
 mainWindow.manageEvent(gameState)
 mainWindow.mainloop()
