@@ -4,6 +4,7 @@ MainWindow.py
 Class describing the widgets in the game window
 
 17/12/20 by Loïc (Pyrrha) TOCQUET and MALOSSE Alice
+TODO disable window
 """
 
 from tkinter import Tk, Label, Button, Canvas

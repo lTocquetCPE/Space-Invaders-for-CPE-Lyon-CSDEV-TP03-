@@ -26,7 +26,7 @@ class Alien () :
             self.spriteSize = [50,50] 
         else : #type=="Octopus"   Large Invader
             self.pos = [0,0]
-            self.spriteSheetPos = [0,0]
+            self.spriteSheetPos = [0,0] 
             self.spriteSize = [50,50] 
 
     def setSprite (self):
