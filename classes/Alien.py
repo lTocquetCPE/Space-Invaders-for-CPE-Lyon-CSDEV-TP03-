@@ -8,6 +8,7 @@ class describing the Alien game entity.
 
 from PIL import Image
 from classes.Sprite import Sprite
+import random
 
 class Alien () :
     def __init__(self, Alientype,position):
@@ -29,6 +30,9 @@ class Alien () :
         #animaton management
         self.animationFrameNumber = 0 #2 frames animation, can be 0 or 1
 
+        self.lazerSpeed = 8
+
+
         #set general invader position
         #specific position is define on GameState
         if self.Alientype == "Squid" : #Small Invader
@@ -41,12 +45,24 @@ class Alien () :
             self.pos = [position[0]+50,position[1]+200]
             self.sprite = Sprite("./ressources/SpriteSheet.png", self.pos, [25,0],[14,8],3)
 
+        #shooting management
+        self.lazerSprite = Sprite("./ressources/SpriteSheet.png", self.pos, [random.randint(0, 11)*3,21],[3,7], 3)
+        self.lazerDisplay = False
+        self.shootProba = 180
+
         #set explosion sprite sheet
         self.explosionSprite = Sprite("./ressources/SpriteSheet.png", self.pos, [40,0],[15,8],3)
 
     def draw (self, gameCanvas):
         self.sprite.draw(gameCanvas)
+        if self.lazerDisplay :
+            self.lazerSprite.draw(gameCanvas)
 
+    #handles the alien shooting
+    def shoot(self):
+        if self.lazerDisplay == False:
+            self.lazerDisplay = True
+            self.lazerSprite.pos = self.sprite.pos
 
     def manageEntity(self, gameState):
         if not self.isDead:
@@ -61,7 +77,15 @@ class Alien () :
                 self.move(0,self.deltay)
                 self.frameCounter=0
             self.frameCounter+=1
-            
+
+            if random.randint(0, self.shootProba - 1)  == 0:
+                self.shoot()
+
+            if self.lazerDisplay :
+                if self.lazerSprite.pos[1] + self.lazerSpeed < 800:
+                    self.lazerSprite.pos = (self.lazerSprite.pos[0] , self.lazerSprite.pos[1] + self.lazerSpeed)
+                else: 
+                    self.lazerDisplay = False
            
 
         else :

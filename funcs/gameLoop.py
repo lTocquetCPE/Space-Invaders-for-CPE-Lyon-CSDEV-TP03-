@@ -9,12 +9,23 @@ Function managing the game and drawing loop
 framesPerSecond = 30
 
   #Checks for projectile/Alien colisions
-def projectileCollisions(mainWindow, gameState):
+def projectileCollisionsAlien(mainWindow, gameState):
+
+  
     for proj in gameState.listProjectiles:
       idList = mainWindow.gameCanvas.find_overlapping(proj.sprite.pos[0], proj.sprite.pos[1], proj.sprite.pos[0] + 2, proj.sprite.pos[1] + 2)
       for alien in gameState.listAlien:
         if alien.sprite.id in idList:
           alien.death()
+          proj.removeProjectile(gameState)
+
+  #Checks for projectile/Barrier colisions
+def projectileCollisionsBarrier(mainWindow, gameState):
+
+    for proj in gameState.listProjectiles:
+      idList = mainWindow.gameCanvas.find_overlapping(proj.sprite.pos[0], proj.sprite.pos[1], proj.sprite.pos[0] + 2, proj.sprite.pos[1] + 2)
+      for barrier in gameState.listBarrier:
+        if barrier.sprite.id in idList:
           proj.removeProjectile(gameState)
 
 def gameLoop(mainWindow, gameState):
@@ -28,7 +39,8 @@ def gameLoop(mainWindow, gameState):
   for proj in gameState.listProjectiles:
     proj.manageEntity(gameState)
 
-  projectileCollisions(mainWindow, gameState)
+  projectileCollisionsBarrier(mainWindow, gameState)
+  projectileCollisionsAlien(mainWindow, gameState)
 
 
   #DISPLAYING STUFF

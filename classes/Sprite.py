@@ -47,5 +47,6 @@ class Sprite():
 
   def draw(self, gameCanvas):
       self.img = ImageTk.PhotoImage(self.tempImg)
-      self.id = gameCanvas.create_image(self.pos[0], self.pos[1], image=self.img, anchor="nw")
+      self.id = gameCanvas.create_image(self.pos[0],self.pos[1], image=self.img, anchor="nw")
+
       
