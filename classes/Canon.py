@@ -6,7 +6,7 @@ class describing the Canon game entity.
 17/12/20 by Loïc (Pyrrha) TOCQUET and MALOSSE Alice
 TODO shoots the right sprite
 """
-from classes.AnimatedSprite import AnimatedSprite
+from classes.Sprite import Sprite
 from classes.Projectile import Projectile
 
 class KeyboardInfoCanon():
@@ -17,7 +17,7 @@ class KeyboardInfoCanon():
 
 class Canon ():
     def __init__(self):
-      self.sprite = AnimatedSprite("./ressources/SpriteSheet.png", (215 , 450),(56, 0), (16, 10), 2)
+      self.sprite = Sprite("./ressources/SpriteSheet.png", (215 , 450),(56, 0), (16, 10), 2)
       self.speed = 25
       self.keyboardInfoCanon = KeyboardInfoCanon()
       self.shootFrameCounter = 15
