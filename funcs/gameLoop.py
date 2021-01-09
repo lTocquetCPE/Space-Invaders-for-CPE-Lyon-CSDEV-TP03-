@@ -11,8 +11,11 @@ framesPerSecond = 30
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
-  gameState.canon.manageEntity(gameState)
-  
+  gameState.canon.manageEntity()
+
+  for alien in gameState.listAlien :
+    alien.manageEntity()
+
   for proj in gameState.listProjectiles:
     proj.manageEntity(gameState)
   #DISPLAYING STUFF
