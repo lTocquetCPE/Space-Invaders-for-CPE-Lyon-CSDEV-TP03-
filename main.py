@@ -8,7 +8,7 @@ entry point for the Space Invaders Game
 from tkinter import Tk, Label, Button, Canvas
 
 from classes.MainWindow import MainWindow
-from classes.AnimatedSprite import AnimatedSprite
+from classes.Sprite import Sprite
 from classes.GameState import GameState
 from classes.Alien import Alien
 from funcs.gameLoop import gameLoop
@@ -20,7 +20,7 @@ gameState.canon.sprite.setSpriteScale(1)
 gameLoop(mainWindow, gameState)
 
 
-#firstSprite = AnimatedSprite(mainWindow.gameCanvas, "./ressources/SpriteSheet.png", (0,0), (12, 8))
+#firstSprite = Sprite(mainWindow.gameCanvas, "./ressources/SpriteSheet.png", (0,0), (12, 8))
 #firstSprite.setSpriteSheetPos(mainWindow.gameCanvas, (0,0), (20,20))
 #gameLoop(mainWindow, None)
 

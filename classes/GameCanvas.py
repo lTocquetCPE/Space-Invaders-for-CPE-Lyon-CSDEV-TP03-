@@ -29,5 +29,8 @@ class GameCanvas(Canvas):
         for projectile in gameState.listProjectiles:
             projectile.draw(self)
         
+        for barrier in gameState.listBarrier:
+            barrier.draw(self)
+        
 
 

@@ -6,7 +6,27 @@ Function managing the game and drawing loop
 18/12/20 by Loïc (Pyrrha) TOCQUET and MALOSSE Alice
 """
 
-framesPerSecond = 60
+framesPerSecond = 30
+
+  #Checks for projectile/Alien colisions
+def projectileCollisionsAlien(mainWindow, gameState):
+
+  
+    for proj in gameState.listProjectiles:
+      idList = mainWindow.gameCanvas.find_overlapping(proj.sprite.pos[0], proj.sprite.pos[1], proj.sprite.pos[0] + 2, proj.sprite.pos[1] + 2)
+      for alien in gameState.listAlien:
+        if alien.sprite.id in idList:
+          alien.death()
+          proj.removeProjectile(gameState)
+
+  #Checks for projectile/Barrier colisions
+def projectileCollisionsBarrier(mainWindow, gameState):
+
+    for proj in gameState.listProjectiles:
+      idList = mainWindow.gameCanvas.find_overlapping(proj.sprite.pos[0], proj.sprite.pos[1], proj.sprite.pos[0] + 2, proj.sprite.pos[1] + 2)
+      for barrier in gameState.listBarrier:
+        if barrier.sprite.id in idList:
+          proj.removeProjectile(gameState)
 
 def gameLoop(mainWindow, gameState):
 
@@ -14,10 +34,15 @@ def gameLoop(mainWindow, gameState):
   gameState.canon.manageEntity(gameState)
 
   for alien in gameState.listAlien :
-    alien.manageEntity()
+    alien.manageEntity(gameState)
 
   for proj in gameState.listProjectiles:
     proj.manageEntity(gameState)
+
+  projectileCollisionsBarrier(mainWindow, gameState)
+  projectileCollisionsAlien(mainWindow, gameState)
+
+
   #DISPLAYING STUFF
 
   mainWindow.gameCanvas.updateCanvas(gameState)
