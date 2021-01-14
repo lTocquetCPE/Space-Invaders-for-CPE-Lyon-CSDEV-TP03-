@@ -62,7 +62,7 @@ class Alien () :
     def shoot(self):
         if self.lazerDisplay == False:
             self.lazerDisplay = True
-            self.lazerSprite.pos = self.sprite.pos
+            self.lazerSprite.pos = (self.sprite.pos[0] + 12, self.sprite.pos[1])
 
     def manageEntity(self, gameState):
         if not self.isDead:

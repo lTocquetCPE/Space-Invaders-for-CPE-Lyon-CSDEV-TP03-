@@ -59,10 +59,14 @@ class Canon ():
           if self.sprite.pos[0] - self.speed >= 0:
             self.sprite.pos = (self.sprite.pos[0] - self.speed, self.sprite.pos[1])
         
-
+    #Handles projectile display
     def shoot(self, gameState):
       projectile = Projectile(self.sprite.pos[0] + 9)
       gameState.listProjectiles.append(projectile)
 
+      
+
     def draw(self, gameCanvas):
+      self.sprite.setSpriteScale(2)#Weird workaround, the sprite scale is reset to 1 and I can't find where
       self.sprite.draw(gameCanvas)
+
