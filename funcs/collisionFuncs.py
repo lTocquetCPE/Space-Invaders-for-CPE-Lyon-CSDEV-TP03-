@@ -44,4 +44,4 @@ def lazerCollisionsCanon(mainWindow, gameState):
       idList = mainWindow.gameCanvas.find_overlapping(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 4, alien.lazerSprite.pos[1] + 6)
       mainWindow.gameCanvas.create_rectangle(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 6, alien.lazerSprite.pos[1] + 10, fill ="red")
       if gameState.canon.sprite.id in idList:
-         gameState.canon.getHit(gameState)
+         gameState.canon.getHit(gameState, alien)

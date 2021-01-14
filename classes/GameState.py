@@ -14,7 +14,7 @@ class GameState() :
     def __init__(self):
 
         self.gameState="off"
-        self.nbLives=3
+        self.healthPoint = 3
         self.score=0
         self.canon = Canon()
         self.listProjectiles = []

@@ -8,6 +8,7 @@ TODO shoots the right sprite
 """
 from classes.Sprite import Sprite
 from classes.Projectile import Projectile
+from PIL import Image
 
 class KeyboardInfoCanon():
   def __init__(self):
@@ -22,18 +23,36 @@ class Canon ():
       self.keyboardInfoCanon = KeyboardInfoCanon()
       self.shootFrameCounter = 15
       self.shootEveryNFrames = 15
+      self.isDead = False
+      self.invicibilityFrames = 40
+      self.invincibilityCounter = 0
+      self.isInvincible = False
+      self.isDisplayed = True
 
     #Function called in the game Loop. Contains all the things needed to be done each frame
     def manageEntity(self, gameState):
-      if self.keyboardInfoCanon.isRightPressed:
-          self.move("RIGHT")
-      if self.keyboardInfoCanon.isLeftPressed:
-          self.move("LEFT")
-      if self.keyboardInfoCanon.isSpacePressed:
-          if self.shootFrameCounter == self.shootEveryNFrames:
-            self.shoot(gameState)
-            self.shootFrameCounter = 0
-          self.shootFrameCounter += 1    
+      if not self.isDead:
+        if self.keyboardInfoCanon.isRightPressed:
+            self.move("RIGHT")
+        if self.keyboardInfoCanon.isLeftPressed:
+            self.move("LEFT")
+        if self.keyboardInfoCanon.isSpacePressed:
+            if self.shootFrameCounter == self.shootEveryNFrames:
+              self.shoot(gameState)
+              self.shootFrameCounter = 0
+            self.shootFrameCounter += 1   
+
+        #Color when invincible
+        if self.isInvincible:
+          self.invincibilityCounter += 1
+          if (self.invincibilityCounter % 5) == 0:
+            self.isDisplayed = not self.isDisplayed
+          if self.invincibilityCounter >= self.invicibilityFrames:
+              self.invincibilityCounter = 0
+              self.isInvincible = False
+              self.isDisplayed = True
+        
+      
 
     #Function called by keyboard events. Updates the keyboardInfoCanon
     def handleKeyboardEvent(self, keycode, eventType):
@@ -64,9 +83,30 @@ class Canon ():
       projectile = Projectile(self.sprite.pos[0] + 9)
       gameState.listProjectiles.append(projectile)
 
-      
+    
+    def getHit(self, gameState, alien):
+      if not self.isInvincible:
+        alien.lazerDisplay = False
+        gameState.healthPoint -= 1 
+        if gameState.healthPoint == 0:
+          self.isDead = True
+          self.isDisplayed = False
+
+            #Color management
+        rgbaIMG = self.sprite.tempImg.convert("RGB")
+
+        r, g, b = rgbaIMG.split()
+
+        g = g.point(lambda i: i - ((1/3)*255))
+        b = b.point(lambda i: i - ((1/3)*255))
+
+        self.sprite.tempImg = Image.merge('RGB', (r, g, b))
+        self.isInvincible = True
+
+
 
     def draw(self, gameCanvas):
-      self.sprite.setSpriteScale(2)#Weird workaround, the sprite scale is reset to 1 and I can't find where
-      self.sprite.draw(gameCanvas)
+      if self.isDisplayed:
+        self.sprite.setSpriteScale(2)#Weird workaround, the sprite scale is reset to 1 and I can't find where
+        self.sprite.draw(gameCanvas)
 
