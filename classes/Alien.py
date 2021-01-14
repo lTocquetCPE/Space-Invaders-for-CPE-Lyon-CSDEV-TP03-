@@ -115,6 +115,7 @@ class Alien () :
         self.sprite = self.explosionSprite
         self.sprite.pos = prevSpritePos
         self.isDead = True
+        gameState.score+=10
         
 
 

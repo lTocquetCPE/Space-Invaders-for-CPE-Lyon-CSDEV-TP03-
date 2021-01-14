@@ -14,6 +14,7 @@ class GameState() :
     def __init__(self):
 
         self.gameState="off"
+        self.level=1
         self.nbLives=3
         self.score=0
         self.canon = Canon()
@@ -31,3 +32,4 @@ class GameState() :
         self.listBarrier.append(Barrier((275,375)))
         self.listBarrier.append(Barrier((450,375)))
         self.listBarrier.append(Barrier((631,375)))
+

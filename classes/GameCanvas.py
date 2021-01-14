@@ -17,7 +17,6 @@ class GameCanvas(Canvas):
         self.width = 800
         Canvas.__init__(self, width = self.width, height = self.height , bg="black")
 
-
         
     
     #TODO updates everything on the canvas (calls a special function in each element)
@@ -28,9 +27,19 @@ class GameCanvas(Canvas):
             alien.draw(self)
         for projectile in gameState.listProjectiles:
             projectile.draw(self)
-        
         for barrier in gameState.listBarrier:
             barrier.draw(self)
+
+        self.level=str(gameState.level)
+        self.textlevel=self.create_text(50,25,text='LV'+self.level, fill='white', font='terminal')
+
+        self.score=str(gameState.score)
+        self.textscore=self.create_text(150,25,text='Score : '+self.score, fill='white', font='terminal')
+
+        self.lives=str(gameState.nbLives)
+        self.textlives=self.create_text(725,25,text='Lives '+self.lives, fill='white', font='terminal')
+
+        
         
 
 
