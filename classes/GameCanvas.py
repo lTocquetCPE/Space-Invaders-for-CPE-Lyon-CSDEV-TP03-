@@ -36,7 +36,7 @@ class GameCanvas(Canvas):
         self.score=str(gameState.score)
         self.textscore=self.create_text(150,25,text='Score : '+self.score, fill='white', font='terminal')
 
-        self.lives=str(gameState.nbLives)
+        self.lives=str(gameState.healthPoint)
         self.textlives=self.create_text(725,25,text='Lives '+self.lives, fill='white', font='terminal')
 
         

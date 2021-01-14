@@ -25,9 +25,11 @@ def gameLoop(mainWindow, gameState):
   projectileCollisionsBarrier(mainWindow, gameState)
   projectileCollisionsAlien(mainWindow, gameState)
   lazerCollisionsBarrier(mainWindow, gameState)
+  lazerCollisionsCanon(mainWindow, gameState)
 
 
   #DISPLAYING STUFF
+  mainWindow.currentLivesLabel["text"] = "Lives : " + str(gameState.healthPoint)
 
   mainWindow.gameCanvas.updateCanvas(gameState)
 
