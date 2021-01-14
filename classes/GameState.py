@@ -14,13 +14,15 @@ class GameState() :
     def __init__(self):
 
         self.gameState="off"
+        self.level=1
+        self.nbAlien=4*self.level
         self.healthPoint = 3
         self.score=0
         self.canon = Canon()
         self.listProjectiles = []
         self.listAlien=[]
         self.listBarrier=[]
-        for i in range(12):   #generalisation with n variable for switch between level (level 1 => 5, level 2 => 9, level 3 => 12)
+        for i in range(self.nbAlien):   #generalisation with n variable for switch between level (level 1 => 4, level 2 => 8, level 3 => 12)
             self.listAlien.append(Alien("Squid",[52*i,0]))
             self.listAlien.append(Alien("Crab",[52*i,0]))
             self.listAlien.append(Alien("Crab",[52*i,50]))
