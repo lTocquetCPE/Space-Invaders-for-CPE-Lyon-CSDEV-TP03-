@@ -26,7 +26,7 @@ class Sprite():
 
     self.spriteSheetPos = spriteSheetPos
     self.size = size
-    self.setSpriteScale(scale)
+    self.setSpriteScale(self.scale)
     self.setSpriteSheetPos(self.spriteSheetPos, self.size)
     
 
