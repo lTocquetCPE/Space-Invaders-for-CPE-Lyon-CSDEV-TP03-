@@ -36,7 +36,7 @@ class Alien () :
         #set general invader position
         #specific position is define on GameState
         if self.Alientype == "Squid" : #Small Invader
-            self.pos = [position[0]+50,position[1]+50]                #position on canvas
+            self.pos = [position[0]+50,position[1]+50]       #position on canvas
             self.sprite = Sprite("./ressources/SpriteSheet.png", self.pos, [0,0],[11,8],3)
         elif self.Alientype == "Crab" : #Medium Invader
             self.pos = [position[0]+50,position[1]+100]
@@ -44,6 +44,7 @@ class Alien () :
         else : #type=="Octopus"   Large Invader
             self.pos = [position[0]+50,position[1]+200]
             self.sprite = Sprite("./ressources/SpriteSheet.png", self.pos, [25,0],[14,8],3)
+        self.countPosY=self.pos[1]
 
         #shooting management
         self.lazerSprite = Sprite("./ressources/SpriteSheet.png", self.pos, [random.randint(0, 11)*3,21],[3,7], 3)
@@ -65,7 +66,7 @@ class Alien () :
             self.lazerSprite.pos = (self.sprite.pos[0] + 12, self.sprite.pos[1])
 
     def manageEntity(self, gameState):
-        if not self.isDead:
+        if not self.isDead and gameState.state!='lose':
             #Movement
             if self.frameCounter==self.nbFrame and self.moveCounter!=0:
                 self.move(self.deltax,0)
@@ -76,9 +77,11 @@ class Alien () :
                 self.deltax=-1*self.deltax
                 self.move(0,self.deltay)
                 self.frameCounter=0
+                self.countPosY+=self.deltay
             self.frameCounter+=1
 
-            if self.pos[1]==375 :
+            #lose game when alien touch barrier
+            if self.countPosY>=375 :
                 gameState.state='lose'
 
             if random.randint(0, self.shootProba - 1)  == 0:
@@ -120,5 +123,3 @@ class Alien () :
         self.isDead = True
         gameState.score+=10
         
-
-

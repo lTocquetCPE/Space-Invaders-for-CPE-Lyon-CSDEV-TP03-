@@ -41,7 +41,6 @@ class GameCanvas(Canvas):
 
         if gameState.state=='lose':
             self.textGameOver=self.create_text(400,250,text='GAME OVER', fill='red', font=('terminal',100))
-            self.textRestart=self.create_text(400,400,text='Restart', fill='white', font=('terminal',80))
 
         if gameState.state == "win":
             self.winText=self.create_text(400,250,text='YOU WON !', fill='white', font=('terminal',100))
