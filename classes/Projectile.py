@@ -14,7 +14,7 @@ class Projectile():
   def __init__(self, initXPos):
     
     self.initXPos = initXPos
-    self.speed = 8
+    self.speed = 10
     self.sprite = Sprite("./ressources/SpriteSheet.png", (self.initXPos ,440),(20, 25), (3, 7), 2)
 
   #Function called in gameLoop, makes the projectile move and deletes in when not displayed
