@@ -110,7 +110,7 @@ class Alien () :
   
         self.sprite.setSpriteSheetPos((self.sprite.cropPos[0], self.sprite.cropPos[1] + spriteSheetPosChange), (self.sprite.cropSize[0], self.sprite.cropSize[1]))
    
-    def death (self):
+    def death (self, gameState):
         prevSpritePos = self.sprite.pos
         self.sprite = self.explosionSprite
         self.sprite.pos = prevSpritePos

@@ -14,7 +14,7 @@ def projectileCollisionsAlien(mainWindow, gameState):
       idList = mainWindow.gameCanvas.find_overlapping(proj.sprite.pos[0], proj.sprite.pos[1], proj.sprite.pos[0] + 2, proj.sprite.pos[1] + 2)
       for alien in gameState.listAlien:
         if alien.sprite.id in idList:
-          alien.death()
+          alien.death(gameState)
           proj.removeProjectile(gameState)
 
   #Checks and handles for projectile/Barrier colisions
