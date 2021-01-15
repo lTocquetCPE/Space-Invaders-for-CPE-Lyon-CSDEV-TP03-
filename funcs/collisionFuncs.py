@@ -31,7 +31,6 @@ def lazerCollisionsBarrier(mainWindow, gameState):
   for alien in gameState.listAlien:
     if alien.lazerDisplay:
       idList = mainWindow.gameCanvas.find_overlapping(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 4, alien.lazerSprite.pos[1] + 6)
-      mainWindow.gameCanvas.create_rectangle(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 6, alien.lazerSprite.pos[1] + 10, fill ="red")
       for barrier in gameState.listBarrier:
         if barrier.sprite.id in idList:
           alien.lazerDisplay = False
@@ -42,6 +41,5 @@ def lazerCollisionsCanon(mainWindow, gameState):
    for alien in gameState.listAlien:
     if alien.lazerDisplay:
       idList = mainWindow.gameCanvas.find_overlapping(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 4, alien.lazerSprite.pos[1] + 6)
-      mainWindow.gameCanvas.create_rectangle(alien.lazerSprite.pos[0] + 2, alien.lazerSprite.pos[1], alien.lazerSprite.pos[0] + 6, alien.lazerSprite.pos[1] + 10, fill ="red")
       if gameState.canon.sprite.id in idList:
          gameState.canon.getHit(gameState, alien)

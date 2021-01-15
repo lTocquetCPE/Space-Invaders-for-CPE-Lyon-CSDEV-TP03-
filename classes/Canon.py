@@ -18,7 +18,7 @@ class KeyboardInfoCanon():
 
 class Canon ():
     def __init__(self):
-      self.sprite = Sprite("./ressources/SpriteSheet.png", (215 , 450),(56, 0), (16, 10), 2)
+      self.sprite = Sprite("./ressources/SpriteSheet.png", (400 , 450),(56, 0), (16, 10), 2)
       self.speed = 25
       self.keyboardInfoCanon = KeyboardInfoCanon()
       self.shootFrameCounter = 15

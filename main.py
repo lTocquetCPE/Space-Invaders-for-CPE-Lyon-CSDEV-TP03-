@@ -14,8 +14,9 @@ from classes.Alien import Alien
 from funcs.gameLoop import gameLoop
 
 
-mainWindow = MainWindow()
 gameState = GameState()
+mainWindow = MainWindow(gameState)
+
 gameState.canon.sprite.setSpriteScale(1)
 gameLoop(mainWindow, gameState)
 

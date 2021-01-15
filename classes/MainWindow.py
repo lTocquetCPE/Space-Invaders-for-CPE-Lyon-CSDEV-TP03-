@@ -12,7 +12,7 @@ from classes.GameCanvas import GameCanvas
 
 class MainWindow(Tk) :
     #init manages the layout of the window
-    def __init__(self):
+    def __init__(self, gameState):
         Tk.__init__(self)
 
         #window option
@@ -20,7 +20,7 @@ class MainWindow(Tk) :
 
         #widget
         self.gameCanvas = GameCanvas()
-        self.gameButton = Button(self, text="New Game") #to do add command to start a new game
+        self.gameButton = Button(self, text="New Game", command=gameState.startNewGame) #to do add command to start a new game
         self.quitButton = Button(self, text="Quit", command=self.destroy)
         self.currentScoreLabel = Label(self, text="Score :") # to do add score
         self.currentLivesLabel = Label(self, text="Lives :") #to do add lives
