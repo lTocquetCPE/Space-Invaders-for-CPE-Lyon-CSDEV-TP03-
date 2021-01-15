@@ -78,6 +78,9 @@ class Alien () :
                 self.frameCounter=0
             self.frameCounter+=1
 
+            if self.pos[1]==375 :
+                gameState.state='lose'
+
             if random.randint(0, self.shootProba - 1)  == 0:
                 self.shoot()
 

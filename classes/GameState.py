@@ -13,8 +13,8 @@ class GameState() :
     #init game variable
     def __init__(self):
 
-        self.gameState="off"
-        self.level=1
+        self.state="notStarted"
+        self.level=3
         self.nbAlien=4*self.level
         self.healthPoint = 3
         self.score=0
@@ -42,4 +42,6 @@ class GameState() :
         self.listBarrier.append(Barrier((275,375)))
         self.listBarrier.append(Barrier((450,375)))
         self.listBarrier.append(Barrier((631,375)))
+
+        
 

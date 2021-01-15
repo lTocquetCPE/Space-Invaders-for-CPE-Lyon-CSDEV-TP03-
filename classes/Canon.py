@@ -91,6 +91,7 @@ class Canon ():
         if gameState.healthPoint == 0:
           self.isDead = True
           self.isDisplayed = False
+          gameState.state='lose'
 
             #Color management
         rgbaIMG = self.sprite.tempImg.convert("RGB")

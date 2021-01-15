@@ -39,6 +39,10 @@ class GameCanvas(Canvas):
         self.lives=str(gameState.healthPoint)
         self.textlives=self.create_text(725,25,text='Lives '+self.lives, fill='white', font='terminal')
 
+        while gameState.state=='lose':
+            self.textGameOver=self.create_text(400,250,text='GAME OVER', fill='red', font=('terminal',100))
+            self.textRestart=self.create_text(400,400,text='Restart', fill='white', font=('terminal',80))
+
         
         
 
