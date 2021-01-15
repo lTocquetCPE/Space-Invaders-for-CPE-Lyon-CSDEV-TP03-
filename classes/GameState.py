@@ -11,10 +11,10 @@ from classes.Barrier import Barrier
 
 class GameState() :
     #init game variable
-    def __init__(self):
+    def __init__(self, prevLevel = 0):
 
-        self.gameState="off"
-        self.level=1
+        self.state="notStarted"
+        self.level= prevLevel + 1
         self.nbAlien=4*self.level
         self.healthPoint = 3
         self.score=0
@@ -23,9 +23,12 @@ class GameState() :
         self.listAlien=[]
         self.listBarrier=[]
        
-    def startNewGame(self):
+    def startNewGame(self, prevLevel=0):
+        self.state = "started"
+        self.level= prevLevel + 1
         self.healthPoint = 3
         self.score=0
+        self.nbAlien=4*self.level
         self.listProjectiles = []
         self.listAlien=[]
         self.listBarrier=[]

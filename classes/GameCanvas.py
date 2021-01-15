@@ -39,6 +39,9 @@ class GameCanvas(Canvas):
         self.lives=str(gameState.healthPoint)
         self.textlives=self.create_text(725,25,text='Lives '+self.lives, fill='white', font='terminal')
 
+        if gameState.state == "win":
+            self.winText=self.create_text(400,250,text='YOU WON !', fill='white', font=('terminal',100))
+
         
         
 
