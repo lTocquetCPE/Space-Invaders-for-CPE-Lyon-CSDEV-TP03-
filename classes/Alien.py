@@ -29,14 +29,13 @@ class Alien () :
         self.deathFrameCounter = 0
 
 
-        #animaton management
+        #animation management
         self.animationFrameNumber = 0 #2 frames animation, can be 0 or 1
-
         self.lazerSpeed = 8
 
 
         #set general invader position
-        #specific position is define on GameState
+        #specific position is defined on GameState
         if self.Alientype == "Squid" : #Small Invader
             self.pos = [position[0]+50,position[1]+50]       #position on canvas
             self.sprite = Sprite("./ressources/SpriteSheet.png", self.pos, [0,0],[11,8],3)
@@ -57,7 +56,7 @@ class Alien () :
         self.explosionSprite = Sprite("./ressources/SpriteSheet.png", self.pos, [40,0],[15,8],3)
 
         
-
+    #Entity drawing
     def draw (self, gameCanvas):
         self.sprite.draw(gameCanvas)
         if self.lazerDisplay :
@@ -69,14 +68,14 @@ class Alien () :
             self.lazerDisplay = True
             self.lazerSprite.pos = (self.sprite.pos[0] + 12, self.sprite.pos[1])
 
-
+    #Checks for the alien going offscreen and calls the other aliens to change direction
     def manageScreenLimits(self, gameState):
         if self.frameCounter>=self.nbFrame:
             if self.sprite.pos[0] + self.direction*self.deltax >= 760 or self.sprite.pos[0] + self.direction*self.deltax <=10:
                 for al in gameState.listAlien:
                     al.changeDirection()
 
-
+    #gameloop logic of the entity
     def manageEntity(self, gameState):
         if not self.isDead:
 
@@ -114,7 +113,7 @@ class Alien () :
                 gameState.listAlien.remove(self)
             self.deathFrameCounter += 1
 
-
+    #Makes the alien move
     def move (self, deltax, deltay):
         
         self.sprite.pos=(self.sprite.pos[0]+deltax , self.sprite.pos[1]+deltay)
@@ -130,10 +129,12 @@ class Alien () :
   
         self.sprite.setSpriteSheetPos((self.sprite.cropPos[0], self.sprite.cropPos[1] + spriteSheetPosChange), (self.sprite.cropSize[0], self.sprite.cropSize[1]))
    
+    #Called when an alien finds that he hit a screen side
     def changeDirection(self):
         self.direction *= -1 
         self.move(0,self.deltay)
 
+    #Called when an alien should die (Projetile/Alien colision)
     def death (self, gameState):
         prevSpritePos = self.sprite.pos
         self.sprite = self.explosionSprite

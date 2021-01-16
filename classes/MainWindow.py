@@ -17,6 +17,7 @@ class MainWindow(Tk) :
 
         #window option
         self.title("Space Invader")
+        self.minsize(800, 500) 
 
         #widget
         self.gameCanvas = GameCanvas()

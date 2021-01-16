@@ -24,6 +24,7 @@ class GameState() :
         self.listBarrier=[]
         self.alienDirection = 1 # 1 = Right      -1= Left
 
+    #Called to start a new level or a new game
     def startNewGame(self, prevLevel=0, prevScore=0):
         self.state = "started"
         self.level= prevLevel + 1
@@ -35,7 +36,7 @@ class GameState() :
         self.listBarrier=[]
         self.canon = Canon()
 
-        for i in range(self.nbAlien):   #generalisation with n variable for switch between level (level 1 => 4, level 2 => 8, level 3 => 12)
+        for i in range(self.nbAlien): 
             self.listAlien.append(Alien("Squid",[(730/self.nbAlien)*i,0]))
             self.listAlien.append(Alien("Crab",[(730/self.nbAlien)*i,0]))
             self.listAlien.append(Alien("Crab",[(730/self.nbAlien)*i,50]))

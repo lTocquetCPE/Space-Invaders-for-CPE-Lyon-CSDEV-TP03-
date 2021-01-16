@@ -10,11 +10,12 @@ from classes.GameState import GameState
 
 framesPerSecond = 30
 
- 
+
 def nextLevel(mainWindow, gameState):
   if gameState.level < 3:
     gameState.startNewGame(gameState.level, gameState.score)
 
+#Main loop
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
@@ -47,6 +48,6 @@ def gameLoop(mainWindow, gameState):
   #DISPLAYING STUFF
   mainWindow.gameCanvas.updateCanvas(gameState)
 
-  #TODO condition to stop the gameLoop
+  #Game loop related to tkinter event loop
   mainWindow.after(int(1000/framesPerSecond), lambda: gameLoop (mainWindow, gameState))
   

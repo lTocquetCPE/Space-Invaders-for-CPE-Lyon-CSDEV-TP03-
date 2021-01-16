@@ -83,7 +83,7 @@ class Canon ():
       projectile = Projectile(self.sprite.pos[0] + 9)
       gameState.listProjectiles.append(projectile)
 
-    
+    #Called when a Canon/collision happens. Health and invincibility management.
     def getHit(self, gameState, alien):
       if not self.isInvincible:
         alien.lazerDisplay = False
@@ -105,7 +105,7 @@ class Canon ():
         self.isInvincible = True
 
 
-
+    #Entity Draw
     def draw(self, gameCanvas):
       if self.isDisplayed:
         self.sprite.setSpriteScale(2)#Weird workaround, the sprite scale is reset to 1 and I can't find where

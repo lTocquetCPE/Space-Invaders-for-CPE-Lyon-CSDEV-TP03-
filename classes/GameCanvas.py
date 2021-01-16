@@ -18,8 +18,7 @@ class GameCanvas(Canvas):
         Canvas.__init__(self, width = self.width, height = self.height , bg="black")
 
         
-    
-    #TODO updates everything on the canvas (calls a special function in each element)
+    #Main drawing function. Calls all the other entity related draw function
     def updateCanvas(self, gameState):
         self.delete('all')
         gameState.canon.draw(self)

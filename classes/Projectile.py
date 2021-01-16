@@ -24,8 +24,10 @@ class Projectile():
     else :
       gameState.listProjectiles.remove(self)
 
+  
   def removeProjectile(self, gameState):
     gameState.listProjectiles.remove(self)
 
+  #Entity drawing
   def draw(self, gameCanvas):
     self.sprite.draw(gameCanvas)

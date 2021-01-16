@@ -15,10 +15,11 @@ class Barrier():
     self.HP = 10
     self.HPMax = 10
 
+  #Entity Draw
   def draw(self, gameCanvas):
     self.sprite.draw(gameCanvas)
 
-  #becomes redder and redder each damage till destruction
+  #Called when alien lazer/Barrier collision, makes the barrier become redder
   def takeDamage(self, gameState):
     self.HP -= 1
     if self.HP == 0:
