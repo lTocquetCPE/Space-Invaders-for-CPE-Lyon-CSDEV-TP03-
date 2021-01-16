@@ -59,11 +59,11 @@ class Canon ():
       newValue = False
       if eventType == "KEY_PRESS":
         newValue = True
-      if keycode == 114:
+      if keycode == "Right":
         self.keyboardInfoCanon.isRightPressed = newValue
-      elif keycode == 113:
+      elif keycode == "Left":
         self.keyboardInfoCanon.isLeftPressed = newValue
-      elif keycode == 65:
+      elif keycode == "space":
         self.keyboardInfoCanon.isSpacePressed = newValue
       
    
