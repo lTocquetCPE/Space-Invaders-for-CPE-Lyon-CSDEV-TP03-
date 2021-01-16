@@ -39,8 +39,16 @@ class GameCanvas(Canvas):
         self.lives=str(gameState.healthPoint)
         self.textlives=self.create_text(725,25,text='Lives '+self.lives, fill='white', font='terminal')
 
+        if gameState.state=='notStarted':
+            self.textTitle=self.create_text(400,190,text='SPACE', fill='yellow', font=('terminal',90))
+            self.textTitle=self.create_text(400,310,text='INVADERS', fill='yellow', font=('terminal',90))
+
+        if gameState.state=='lose':
+            self.textGameOver=self.create_text(400,250,text='GAME OVER', fill='red', font=('terminal',100))
+
         if gameState.state == "win":
             self.winText=self.create_text(400,250,text='YOU WON !', fill='white', font=('terminal',100))
+
 
         
         

@@ -47,3 +47,5 @@ class GameState() :
         self.listBarrier.append(Barrier((450,375)))
         self.listBarrier.append(Barrier((631,375)))
 
+
+

@@ -20,17 +20,13 @@ class MainWindow(Tk) :
 
         #widget
         self.gameCanvas = GameCanvas()
-        self.gameButton = Button(self, text="New Game", command=gameState.startNewGame) #to do add command to start a new game
-        self.quitButton = Button(self, text="Quit", command=self.destroy)
-        self.currentScoreLabel = Label(self, text="Score :") # to do add score
-        self.currentLivesLabel = Label(self, text="Lives :") #to do add lives
+        self.gameButton = Button(self, text="New Game",command=gameState.startNewGame, bg='black', font='terminal', fg='white',relief='flat')
+        self.quitButton = Button(self, text="Quit", command=self.destroy, bg='black', font='terminal', fg='white',relief='flat')
 
         #pack
         self.gameCanvas.pack()
-        self.gameButton.pack()
-        self.quitButton.pack()
-        self.currentScoreLabel.pack()
-        self.currentLivesLabel.pack()
+        self.gameButton.place(x=22,y=459)
+        self.quitButton.place(x=715,y=459)
 
     #detect board click and add keycode to function 
     def manageEvent (self, gameState):

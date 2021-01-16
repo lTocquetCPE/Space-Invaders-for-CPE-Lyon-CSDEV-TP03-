@@ -45,8 +45,6 @@ def gameLoop(mainWindow, gameState):
 
 
   #DISPLAYING STUFF
-  mainWindow.currentLivesLabel["text"] = "Lives : " + str(gameState.healthPoint)
-
   mainWindow.gameCanvas.updateCanvas(gameState)
 
   #TODO condition to stop the gameLoop
