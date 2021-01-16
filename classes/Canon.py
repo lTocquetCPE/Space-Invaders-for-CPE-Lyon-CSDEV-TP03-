@@ -37,10 +37,10 @@ class Canon ():
         if self.keyboardInfoCanon.isLeftPressed:
             self.move("LEFT")
         if self.keyboardInfoCanon.isSpacePressed:
-            if self.shootFrameCounter == self.shootEveryNFrames:
+            if self.shootFrameCounter >= self.shootEveryNFrames:
               self.shoot(gameState)
               self.shootFrameCounter = 0
-            self.shootFrameCounter += 1   
+        self.shootFrameCounter += 1   
 
         #Color when invincible
         if self.isInvincible:
