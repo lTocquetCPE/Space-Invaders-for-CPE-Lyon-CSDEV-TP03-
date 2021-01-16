@@ -25,8 +25,8 @@ class MainWindow(Tk) :
 
         #pack
         self.gameCanvas.pack()
-        self.gameButton.place(x=22,y=459)
-        self.quitButton.place(x=715,y=459)
+        self.gameButton.place(x=4,y=465)
+        self.quitButton.place(x=728,y=465)
 
     #detect board click and add keycode to function 
     def manageEvent (self, gameState):
