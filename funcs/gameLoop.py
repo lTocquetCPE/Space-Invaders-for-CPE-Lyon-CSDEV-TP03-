@@ -13,12 +13,15 @@ framesPerSecond = 30
  
 def nextLevel(mainWindow, gameState):
   if gameState.level < 3:
-    gameState.startNewGame(gameState.level)
+    gameState.startNewGame(gameState.level, gameState.score)
 
 def gameLoop(mainWindow, gameState):
 
   #GAME LOGIC
   gameState.canon.manageEntity(gameState)
+
+  for alien in gameState.listAlien :
+    alien.manageScreenLimits(gameState)
 
   for alien in gameState.listAlien :
     alien.manageEntity(gameState)
@@ -30,6 +33,8 @@ def gameLoop(mainWindow, gameState):
   projectileCollisionsAlien(mainWindow, gameState)
   lazerCollisionsBarrier(mainWindow, gameState)
   lazerCollisionsCanon(mainWindow, gameState)
+
+
 
   #winning condition
   if gameState.state == "started":

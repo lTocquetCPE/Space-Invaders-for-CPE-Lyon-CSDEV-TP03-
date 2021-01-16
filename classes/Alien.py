@@ -19,6 +19,7 @@ class Alien () :
         self.frameCounter = 0
         self.nbFrame=15
         self.moveCounter=10
+        self.direction = 1
         self.deltax=8
         self.deltay=10
 
@@ -26,6 +27,7 @@ class Alien () :
         self.deathFramesNumber = 10
         self.isDead = False
         self.deathFrameCounter = 0
+
 
         #animaton management
         self.animationFrameNumber = 0 #2 frames animation, can be 0 or 1
@@ -53,6 +55,8 @@ class Alien () :
         #set explosion sprite sheet
         self.explosionSprite = Sprite("./ressources/SpriteSheet.png", self.pos, [40,0],[15,8],3)
 
+        
+
     def draw (self, gameCanvas):
         self.sprite.draw(gameCanvas)
         if self.lazerDisplay :
@@ -64,18 +68,30 @@ class Alien () :
             self.lazerDisplay = True
             self.lazerSprite.pos = (self.sprite.pos[0] + 12, self.sprite.pos[1])
 
+
+    def manageScreenLimits(self, gameState):
+        if self.frameCounter>=self.nbFrame:
+            if self.sprite.pos[0] + self.direction*self.deltax >= 760 or self.sprite.pos[0] + self.direction*self.deltax <=10:
+                for al in gameState.listAlien:
+                    al.changeDirection()
+
+
     def manageEntity(self, gameState):
         if not self.isDead:
+
+            #Alien Speed:
+            if len(gameState.listAlien) <= 10 :
+                self.nbFrame = 12
+            if len(gameState.listAlien) <= 5 :
+                self.nbFrame = 7
+            if len(gameState.listAlien) <= 1 :
+                self.nbFrame = 1
+
             #Movement
-            if self.frameCounter==self.nbFrame and self.moveCounter!=0:
-                self.move(self.deltax,0)
+            if self.frameCounter >= self.nbFrame:
+                self.move(self.direction*self.deltax,0)
                 self.frameCounter=0
-                self.moveCounter-=1
-            elif self.frameCounter==self.nbFrame and self.moveCounter==0:
-                self.moveCounter=10
-                self.deltax=-1*self.deltax
-                self.move(0,self.deltay)
-                self.frameCounter=0
+           
             self.frameCounter+=1
 
             if random.randint(0, self.shootProba - 1)  == 0:
@@ -96,8 +112,7 @@ class Alien () :
 
     def move (self, deltax, deltay):
         
-        self.sprite.pos=(self.sprite.pos[0]+deltax , self.sprite.pos[1])
-        self.sprite.pos=(self.sprite.pos[0], self.sprite.pos[1]+deltay)
+        self.sprite.pos=(self.sprite.pos[0]+deltax , self.sprite.pos[1]+deltay)
 
          #animation
         self.animationFrameNumber +=1
@@ -110,6 +125,10 @@ class Alien () :
   
         self.sprite.setSpriteSheetPos((self.sprite.cropPos[0], self.sprite.cropPos[1] + spriteSheetPosChange), (self.sprite.cropSize[0], self.sprite.cropSize[1]))
    
+    def changeDirection(self):
+        self.direction *= -1 
+        self.move(0,self.deltay)
+
     def death (self, gameState):
         prevSpritePos = self.sprite.pos
         self.sprite = self.explosionSprite
