@@ -4,6 +4,8 @@ main.py
 entry point for the Space Invaders Game
 
 17/12/20 by Loïc (Pyrrha) TOCQUET and MALOSSE Alice
+
+https://github.com/lTocquetCPE/Space-Invaders-for-CPE-Lyon-CSDEV-TP03-
 """
 from tkinter import Tk, Label, Button, Canvas
 
